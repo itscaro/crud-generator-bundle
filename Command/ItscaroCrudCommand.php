@@ -29,7 +29,7 @@ class ItscaroCrudCommand extends GenerateDoctrineCrudCommand
     {
         parent::configure();
 
-        $this->setName('jordillonch:generate:crud');
+        $this->setName('itscaro:generate:crud');
         $this->setDescription('A CRUD generator with paginating and filters.');
     }
 
@@ -42,11 +42,11 @@ class ItscaroCrudCommand extends GenerateDoctrineCrudCommand
     {
         $skeletonDirs = array();
 
-        if (isset($bundle) && is_dir($dir = $bundle->getPath().'/Resources/SensioGeneratorBundle/skeleton')) {
+        if (isset($bundle) && is_dir($dir = $bundle->getPath().'/Resources/skeleton/ItscaroCrudGeneratorBundle')) {
             $skeletonDirs[] = $dir;
         }
 
-        if (is_dir($dir = $this->getContainer()->get('kernel')->getRootdir().'/Resources/SensioGeneratorBundle/skeleton')) {
+        if (is_dir($dir = $this->getContainer()->get('kernel')->getRootdir().'/Resources/skeleton/ItscaroCrudGeneratorBundle')) {
             $skeletonDirs[] = $dir;
         }
 

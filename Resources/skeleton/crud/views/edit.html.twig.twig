@@ -1,9 +1,14 @@
+{% block extends %}
 {{ "{% extends 'ItscaroCrudGeneratorBundle::layout.html.twig' %}" }}
+{% endblock extends %}
 
+{% block title %}
 {{ "{% block title %}" }}
 {{ "{{ parent() }} -  {{ 'views.edit.edit'|trans({'%entity%': '" }}{{ entity }}{{ "'}, 'ItscaroCrudGeneratorBundle') }}" }}
-{{ "{% endblock %}" }}
+{{ "{% endblock title %}" }}
+{% endblock title %}
 
+{% block body %}
 {{ "{% block page %}" }}
 
 <h1>{{ "{{ 'views.edit.edit'|trans({'%entity%': '" }}{{ entity }}{{ "'}, 'ItscaroCrudGeneratorBundle') }}" }}</h1>
@@ -19,4 +24,5 @@
 {% set hide_edit, hide_delete = true, false %}
 {% include 'crud/views/others/record_actions.html.twig.twig' %}
 
-{{ "{% endblock %}" }}
+{{ "{% endblock page %}" }}
+{% endblock body %}

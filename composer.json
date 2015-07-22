@@ -12,18 +12,18 @@
         }
     ],
     "require": {
-        "symfony/symfony": ">2.2.0",
-        "sensio/generator-bundle": ">2.2.0",
+        "symfony/symfony": "~2.2",
+        "sensio/generator-bundle": "~2.5",
         "knplabs/knp-paginator-bundle": "~2.3",
         "lexik/form-filter-bundle": "~3.0",
-        "doctrine/orm": ">=2.2.3"
+        "doctrine/orm": "~2.2.3"
     },
     "require-dev": {
         "phpunit/phpunit": "4.1.*"
     },
     "minimum-stability": "dev",
     "autoload": {
-        "psr-4": { "Itscaro\\CrudGeneratorBundle\\": "" }
+        "psr-4": { "Itscaro\\CrudGeneratorBundle": "" }
     },
     "extra": {
     }

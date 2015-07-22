@@ -8,22 +8,20 @@
      * @Template()
 {% endif %}
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        list($filterForm, $queryBuilder) = $this->filter();
+        list($filterForm, $queryBuilder) = $this->filter($request);
 
-        list($entities, $pagerHtml) = $this->paginator($queryBuilder);
+        $entities = $this->paginator($request, $queryBuilder);
 
 {% if 'annotation' == format %}
         return array(
             'entities' => $entities,
-            'pagerHtml' => $pagerHtml,
             'filterForm' => $filterForm->createView(),
         );
 {% else %}
         return $this->render('{{ bundle }}:{{ entity|replace({'\\': '/'}) }}:index.html.twig', array(
             'entities' => $entities,
-            'pagerHtml' => $pagerHtml,
             'filterForm' => $filterForm->createView(),
         ));
 {% endif %}
@@ -31,11 +29,11 @@
 
     /**
     * Create filter form and process filter request.
-    *
+    * @param Request $request
+    * @return array
     */
-    protected function filter()
+    protected function filter(Request $request)
     {
-        $request = $this->getRequest();
         $session = $request->getSession();
         $filterForm = $this->createForm(new {{ entity }}FilterType());
         $em = $this->getDoctrine()->getManager();
@@ -72,32 +70,18 @@
 
     /**
     * Get results from paginator and get paginator view.
-    *
+    * @param Request $request
+    * @param mixed $queryBuilder
+    * @return \Knp\Component\Pager\Pagination\PaginationInterface
     */
-    protected function paginator($queryBuilder)
+    protected function paginator(Request $request, $queryBuilder)
     {
-        // Paginator
-        $adapter = new DoctrineORMAdapter($queryBuilder);
-        $pagerfanta = new Pagerfanta($adapter);
-        $currentPage = $this->getRequest()->get('page', 1);
-        $pagerfanta->setCurrentPage($currentPage);
-        $entities = $pagerfanta->getCurrentPageResults();
+        $paginator  = $this->get('knp_paginator');
+        $entities = $paginator->paginate(
+            $queryBuilder,
+            $request->query->getInt('page', 1),
+            25
+        );
 
-        // Paginator - route generator
-        $me = $this;
-        $routeGenerator = function($page) use ($me)
-        {
-            return $me->generateUrl('{{ route_name_prefix }}', array('page' => $page));
-        };
-
-        // Paginator - view
-        $translator = $this->get('translator');
-        $view = new TwitterBootstrapView();
-        $pagerHtml = $view->render($pagerfanta, $routeGenerator, array(
-            'proximity' => 3,
-            'prev_message' => $translator->trans('views.index.pagprev', array(), 'ItscaroCrudGeneratorBundle'),
-            'next_message' => $translator->trans('views.index.pagnext', array(), 'ItscaroCrudGeneratorBundle'),
-        ));
-
-        return array($entities, $pagerHtml);
+        return $entities;
     }
