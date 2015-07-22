@@ -25,10 +25,6 @@
     "autoload": {
         "psr-0": { "Itscaro\\CrudGeneratorBundle": "" }
     },
-    "target-dir": "Itscaro/CrudGeneratorBundle",
     "extra": {
-        "branch-alias": {
-            "dev-master": "2.7.x-dev"
-        }
     }
 }
