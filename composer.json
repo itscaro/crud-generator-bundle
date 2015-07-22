@@ -23,7 +23,7 @@
     },
     "minimum-stability": "dev",
     "autoload": {
-        "psr-0": { "Itscaro\\CrudGeneratorBundle": "" }
+        "psr-4": { "Itscaro\\CrudGeneratorBundle": "" }
     },
     "extra": {
     }
