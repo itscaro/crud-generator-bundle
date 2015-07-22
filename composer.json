@@ -2,7 +2,7 @@
     "name": "itscaro/crud-generator-bundle",
     "description": "This bundle generates a nice CRUD",
     "keywords": ["crud", "generator"],
-    "homepage": "https://github.com/itscaro/CrudGeneratorBundle",
+    "homepage": "https://github.com/itscaro/crud-generator-bundle",
     "type": "symfony-bundle",
     "license": "MIT",
     "authors": [
@@ -14,7 +14,7 @@
     "require": {
         "symfony/symfony": ">2.2.0",
         "sensio/generator-bundle": ">2.2.0",
-        "pagerfanta/pagerfanta": "1.0.*@dev",
+        "knplabs/knp-paginator-bundle": "~2.3",
         "lexik/form-filter-bundle": "~3.0",
         "doctrine/orm": ">=2.2.3"
     },
