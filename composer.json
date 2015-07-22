@@ -1,0 +1,34 @@
+{
+    "name": "itscaro/crud-generator-bundle",
+    "description": "This bundle generates a nice CRUD",
+    "keywords": ["crud", "generator"],
+    "homepage": "https://github.com/itscaro/CrudGeneratorBundle",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Minh-Quan TRAN",
+            "email": "account@itscaro.me"
+        }
+    ],
+    "require": {
+        "symfony/symfony": ">2.2.0",
+        "sensio/generator-bundle": ">2.2.0",
+        "pagerfanta/pagerfanta": "1.0.*@dev",
+        "lexik/form-filter-bundle": "~3.0",
+        "doctrine/orm": ">=2.2.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.1.*"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-0": { "Itscaro\\CrudGeneratorBundle": "" }
+    },
+    "target-dir": "Itscaro/CrudGeneratorBundle",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.7.x-dev"
+        }
+    }
+}
