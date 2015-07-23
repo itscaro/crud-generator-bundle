@@ -13,11 +13,12 @@
 
 namespace Itscaro\CrudGeneratorBundle\Tests\Command;
 
+use Doctrine\ORM\EntityManager;
 use Sensio\Bundle\GeneratorBundle\Command\Helper\QuestionHelper;
-use Sensio\Bundle\GeneratorBundle\Tests\Command\GenerateCommandTest;
+use Sensio\Bundle\GeneratorBundle\Tests\Command\GenerateDoctrineCrudCommandTest ;
 use Symfony\Component\Console\Tester\CommandTester;
 
-class ItscaroCrudCommandTest extends GenerateCommandTest
+class ItscaroCrudCommandTest extends GenerateDoctrineCrudCommandTest
 {
     /**
      * @dataProvider getInteractiveCommandData
@@ -78,10 +79,8 @@ class ItscaroCrudCommandTest extends GenerateCommandTest
     {
         $command = $this
             ->getMockBuilder('Itscaro\CrudGeneratorBundle\Command\ItscaroCrudCommand')
-//            ->getMockBuilder('Sensio\Bundle\GeneratorBundle\Command\GenerateDoctrineCrudCommand')
             ->setMethods(array(
-                'getEntityMetadata',
-                'getQuestionHelper'
+                'getEntityMetadata'
             ))
             ->getMock()
         ;
@@ -90,12 +89,6 @@ class ItscaroCrudCommandTest extends GenerateCommandTest
             ->expects($this->any())
             ->method('getEntityMetadata')
             ->will($this->returnValue(array($this->getDoctrineMetadata())))
-        ;
-
-        $command
-            ->expects($this->any())
-            ->method('getQuestionHelper')
-            ->will($this->returnValue(new QuestionHelper()))
         ;
 
         $command->setContainer($this->getContainer());
@@ -147,19 +140,4 @@ class ItscaroCrudCommandTest extends GenerateCommandTest
             ;
     }
 
-    protected function getContainer()
-    {
-        $container = parent::getContainer();
-
-        $registry = $this->getMock('Symfony\Bridge\Doctrine\RegistryInterface');
-        $registry
-            ->expects($this->any())
-            ->method('getEntityNamespace')
-            ->will($this->returnValue('Foo\\FooBundle\\Entity'))
-        ;
-
-        $container->set('doctrine', $registry);
-
-        return $container;
-    }
 }
