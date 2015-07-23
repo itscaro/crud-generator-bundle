@@ -59,8 +59,8 @@ Use following command from console:
 ## Use your own skeleton
 
 You can put your own templates in :
-* <BUNDLE>/Resources/skeleton/ItscaroCrudGenerator
-* <ROOT>/Resources/skeleton/ItscaroCrudGenerator
+* BUNDLE_DIR/Resources/skeleton/ItscaroCrudGenerator
+* ROOT_DIR/Resources/skeleton/ItscaroCrudGenerator
 
 ## Credits
 

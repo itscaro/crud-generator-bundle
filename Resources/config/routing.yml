@@ -1,3 +1,0 @@
-ItscaroCrudGeneratorBundle_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: ItscaroCrudGeneratorBundle:Default:index }
