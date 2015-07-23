@@ -42,11 +42,11 @@ class ItscaroCrudCommand extends GenerateDoctrineCrudCommand
     {
         $skeletonDirs = array();
 
-        if (isset($bundle) && is_dir($dir = $bundle->getPath().'/Resources/skeleton/ItscaroCrudGeneratorBundle')) {
+        if (isset($bundle) && is_dir($dir = $bundle->getPath().'/Resources/skeleton/ItscaroCrudGenerator')) {
             $skeletonDirs[] = $dir;
         }
 
-        if (is_dir($dir = $this->getContainer()->get('kernel')->getRootdir().'/Resources/skeleton/ItscaroCrudGeneratorBundle')) {
+        if (is_dir($dir = $this->getContainer()->get('kernel')->getRootdir().'/Resources/skeleton/ItscaroCrudGenerator')) {
             $skeletonDirs[] = $dir;
         }
 
