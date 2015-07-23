@@ -16,7 +16,7 @@ namespace Itscaro\CrudGeneratorBundle\Tests\Generator;
 use Sensio\Bundle\GeneratorBundle\Tests\Generator\GeneratorTest;
 use Sensio\Bundle\GeneratorBundle\Generator\DoctrineFormGenerator;
 
-class ItscaroFormGeneratorTest extends GeneratorTest
+class FormGeneratorTest extends GeneratorTest
 {
     public function testGenerate()
     {

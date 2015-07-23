@@ -16,7 +16,7 @@ namespace Itscaro\CrudGeneratorBundle\Tests\Generator;
 use Sensio\Bundle\GeneratorBundle\Tests\Generator\DoctrineCrudGeneratorTest;
 use Itscaro\CrudGeneratorBundle\Generator\CrudGenerator;
 
-class ItscaroCrudGeneratorTest extends DoctrineCrudGeneratorTest
+class CrudGeneratorTest extends DoctrineCrudGeneratorTest
 {
     protected function getGenerator()
     {

@@ -18,7 +18,7 @@ use Sensio\Bundle\GeneratorBundle\Command\Helper\QuestionHelper;
 use Sensio\Bundle\GeneratorBundle\Tests\Command\GenerateDoctrineCrudCommandTest ;
 use Symfony\Component\Console\Tester\CommandTester;
 
-class ItscaroCrudCommandTest extends GenerateDoctrineCrudCommandTest
+class CrudCommandTest extends GenerateDoctrineCrudCommandTest
 {
     /**
      * @dataProvider getInteractiveCommandData
