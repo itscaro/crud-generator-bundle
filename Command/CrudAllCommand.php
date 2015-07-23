@@ -36,7 +36,7 @@ class CrudAllCommand extends ContainerAwareCommand
         $this->setName('itscaro:generate:all');
         $this->setDefinition(array(
             new InputArgument('bundle', InputArgument::REQUIRED, 'Bundle name'),
-            new InputOption('route-prefix', '', InputOption::VALUE_REQUIRED, 'The route prefix'),
+            new InputOption('route-prefix', '', InputOption::VALUE_OPTIONAL, 'The route prefix, this value is suffixed by lower-cased entity name'),
             new InputOption('with-write', '', InputOption::VALUE_NONE, 'Whether or not to generate create, new and delete actions'),
             new InputOption('format', '', InputOption::VALUE_REQUIRED, 'Use the format for configuration files (php, xml, yml, or annotation)', 'annotation'),
             new InputOption('overwrite', '', InputOption::VALUE_NONE, 'Do not stop the generation if crud controller already exist, thus overwriting all generated files'),
@@ -55,16 +55,17 @@ class CrudAllCommand extends ContainerAwareCommand
             foreach ($this->getBundleMetadata($bundle) as $m) {
                 /* @var $m ClassMetadata */
                 $_tmp = explode('\\', $m->getName());
-                $entities[] = $bundleName . ':' . array_pop($_tmp);
+                $entityName = array_pop($_tmp);
+                $entities[$bundleName . ':' . $entityName] = $entityName;
             }
 
             $command = $this->getApplication()->find('itscaro:generate:crud');
-            foreach ($entities as $entity) {
+            foreach ($entities as $entityShortcut => $entityName) {
                 try {
                     $_input = new ArrayInput([
                         'command' => 'itscaro:generate:crud',
-                        '--entity' => $entity,
-                        '--route-prefix' => $input->getOption('route-prefix'),
+                        '--entity' => $entityShortcut,
+                        '--route-prefix' => $input->getOption('route-prefix') . strtolower($entityName),
                         '--with-write' => $input->getOption('with-write'),
                         '--format' => $input->getOption('format'),
                         '--overwrite' => $input->getOption('overwrite'),
