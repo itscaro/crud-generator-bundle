@@ -42,28 +42,23 @@ class ItscaroCrudCommand extends GenerateDoctrineCrudCommand
     {
         $skeletonDirs = array();
 
-        if (isset($bundle) && is_dir($dir = $bundle->getPath().'/Resources/skeleton/ItscaroCrudGenerator')) {
+        if (isset($bundle) && is_dir($dir = $bundle->getPath().'/Resources/ItscaroCrudGeneratorBundle/skeleton')) {
             $skeletonDirs[] = $dir;
         }
 
-        if (is_dir($dir = $this->getContainer()->get('kernel')->getRootdir().'/Resources/skeleton/ItscaroCrudGenerator')) {
+        if (is_dir($dir = $this->getContainer()->get('kernel')->getRootdir().'/Resources/ItscaroCrudGeneratorBundle/skeleton')) {
             $skeletonDirs[] = $dir;
         }
 
-        $skeletonDirs[] = $this->getContainer()->get('kernel')->locateResource('@ItscaroCrudGeneratorBundle/Resources/skeleton');
-        $skeletonDirs[] = $this->getContainer()->get('kernel')->locateResource('@ItscaroCrudGeneratorBundle/Resources');
+        $skeletonDirs[] = __DIR__.'/../Resources/skeleton';
+        $skeletonDirs[] = __DIR__.'/../Resources';
 
         return $skeletonDirs;
     }
 
     protected function interact(InputInterface $input, OutputInterface $output)
     {
-        if(method_exists($this, 'getDialogHelper') ) {
-            $dialog = $this->getDialogHelper();
-        } else {
-            $dialog = $this->getQuestionHelper();
-        }
-
+        $dialog = $this->getQuestionHelper();
         $dialog->writeSection($output, 'ItscaroCrudGeneratorBundle');
 
         parent::interact($input, $output);

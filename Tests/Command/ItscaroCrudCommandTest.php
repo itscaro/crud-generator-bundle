@@ -17,7 +17,7 @@ use Sensio\Bundle\GeneratorBundle\Tests\Command\GenerateDoctrineCrudCommandTest;
 use Sensio\Bundle\GeneratorBundle\Tests\Command\GenerateCommandTest;
 use Symfony\Component\Console\Tester\CommandTester;
 
-class JordiLlonchCrudCommandTest extends GenerateCommandTest
+class ItscaroCrudCommandTest extends GenerateCommandTest
 {
     /**
      * @dataProvider getInteractiveCommandData
@@ -77,7 +77,7 @@ class JordiLlonchCrudCommandTest extends GenerateCommandTest
     protected function getCommand($generator, $input)
     {
         $command = $this
-            ->getMockBuilder('Itscaro\CrudGeneratorBundle\Command\JordiLlonchCrudCommand')
+            ->getMockBuilder('Itscaro\CrudGeneratorBundle\Command\ItscaroCrudCommand')
 //            ->getMockBuilder('Sensio\Bundle\GeneratorBundle\Command\GenerateDoctrineCrudCommand')
             ->setMethods(array('getEntityMetadata'))
             ->getMock()

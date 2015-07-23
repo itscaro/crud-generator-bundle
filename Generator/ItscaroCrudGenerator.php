@@ -57,15 +57,19 @@ class ItscaroCrudGenerator extends DoctrineCrudGenerator
         $parts = explode('\\', $entity);
         array_pop($parts);
 
-        $this->renderFile('form/FormFilterType.php.twig', $this->classPath, array(
-            'fields_data'      => $this->getFieldsDataFromMetadata($metadata),
-            'namespace'        => $bundle->getNamespace(),
-            'entity_namespace' => implode('\\', $parts),
-            'entity_class'     => $entityClass,
-            'bundle'           => $bundle->getName(),
-            'form_class'       => $this->className,
-            'form_filter_type_name'   => strtolower(str_replace('\\', '_', $bundle->getNamespace()).($parts ? '_' : '').implode('_', $parts).'_'.$this->className),
-        ));
+        $this->renderFile(
+            'form/FormFilterType.php.twig',
+            $this->classPath,
+            array(
+                'fields_data'      => $this->getFieldsDataFromMetadata($metadata),
+                'namespace'        => $bundle->getNamespace(),
+                'entity_namespace' => implode('\\', $parts),
+                'entity_class'     => $entityClass,
+                'bundle'           => $bundle->getName(),
+                'form_class'       => $this->className,
+                'form_filter_type_name'   => strtolower(str_replace('\\', '_', $bundle->getNamespace()).($parts ? '_' : '').implode('_', $parts).'_'.$this->className),
+            )
+        );
     }
 
     public function getFilterType($dbType, $columnName)
