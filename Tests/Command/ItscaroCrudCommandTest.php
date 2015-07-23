@@ -15,6 +15,7 @@ namespace Itscaro\CrudGeneratorBundle\Tests\Command;
 
 use Sensio\Bundle\GeneratorBundle\Tests\Command\GenerateDoctrineCrudCommandTest;
 use Sensio\Bundle\GeneratorBundle\Tests\Command\GenerateCommandTest;
+use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Tester\CommandTester;
 
 class ItscaroCrudCommandTest extends GenerateCommandTest
@@ -87,6 +88,12 @@ class ItscaroCrudCommandTest extends GenerateCommandTest
             ->expects($this->any())
             ->method('getEntityMetadata')
             ->will($this->returnValue(array($this->getDoctrineMetadata())))
+        ;
+
+        $command
+            ->expects($this->any())
+            ->method('getQuestionHelper')
+            ->will($this->returnValue(new QuestionHelper()))
         ;
 
         $command->setContainer($this->getContainer());
