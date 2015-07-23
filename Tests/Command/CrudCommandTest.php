@@ -78,7 +78,7 @@ class CrudCommandTest extends GenerateDoctrineCrudCommandTest
     protected function getCommand($generator, $input)
     {
         $command = $this
-            ->getMockBuilder('Itscaro\CrudGeneratorBundle\Command\ItscaroCrudCommand')
+            ->getMockBuilder('Itscaro\CrudGeneratorBundle\Command\CrudCommand')
             ->setMethods(array(
                 'getEntityMetadata'
             ))
