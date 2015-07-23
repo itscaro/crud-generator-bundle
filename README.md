@@ -4,7 +4,7 @@ This Symfony2 bundle extends [SensioGeneratorBundle] (https://github.com/sensio/
 
 This bundle is based on the one made by Jordi Llonch [CrudGeneratorBundle] (https://github.com/jordillonch/CrudGeneratorBundle)
 
-[![Build Status](https://secure.travis-ci.org/itscaro/crud-generator-bundle.png?branch=master)](http://travis-ci.org/jordillonch/CrudGeneratorBundle)
+[![Build Status](https://secure.travis-ci.org/itscaro/crud-generator-bundle.png?branch=master)](http://travis-ci.org/itscaro/crud-generator-bundle)
 
 ## Screenshot
 
