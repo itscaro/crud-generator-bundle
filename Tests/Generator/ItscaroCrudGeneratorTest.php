@@ -14,13 +14,13 @@
 namespace Itscaro\CrudGeneratorBundle\Tests\Generator;
 
 use Sensio\Bundle\GeneratorBundle\Tests\Generator\DoctrineCrudGeneratorTest;
-use Itscaro\CrudGeneratorBundle\Generator\ItscaroCrudGenerator;
+use Itscaro\CrudGeneratorBundle\Generator\CrudGenerator;
 
 class ItscaroCrudGeneratorTest extends DoctrineCrudGeneratorTest
 {
     protected function getGenerator()
     {
-        $generator =  new ItscaroCrudGenerator($this->filesystem);
+        $generator =  new CrudGenerator($this->filesystem);
         $generator->setSkeletonDirs(array(__DIR__.'/../../Resources/skeleton'));
 
         return $generator;

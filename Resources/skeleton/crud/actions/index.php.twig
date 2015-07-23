@@ -48,31 +48,34 @@
     */
     protected function filter(Request $request, $queryBuilder)
     {
+        $sessionKey = '{{ entity }}ControllerFilter';
+        $filterType = new {{ entity }}FilterType();
+
         $session = $request->getSession();
-        $filterForm = $this->createForm(new {{ entity }}FilterType());
+        $filterForm = $this->createForm($filterType);
 
         // Reset filter
         if ($request->get('filter_action') == 'reset') {
-            $session->remove('{{ entity }}ControllerFilter');
+            $session->remove($sessionKey);
         }
 
         // Filter action
         if ($request->get('filter_action') == 'filter') {
-            // Bind values from the request
-            $filterForm->bind($request);
+            // Submit values from the request
+            $filterForm->submit($request);
 
             if ($filterForm->isValid()) {
                 // Build the query from the given form object
                 $this->get('lexik_form_filter.query_builder_updater')->addFilterConditions($filterForm, $queryBuilder);
                 // Save filter to session
                 $filterData = $filterForm->getData();
-                $session->set('{{ entity }}ControllerFilter', $filterData);
+                $session->set($sessionKey, $filterData);
             }
         } else {
             // Get filter from session
-            if ($session->has('{{ entity }}ControllerFilter')) {
-                $filterData = $session->get('{{ entity }}ControllerFilter');
-                $filterForm = $this->createForm(new {{ entity }}FilterType(), $filterData);
+            if ($session->has($sessionKey)) {
+                $filterData = $session->get($sessionKey);
+                $filterForm = $this->createForm($filterType, $filterData);
                 $this->get('lexik_form_filter.query_builder_updater')->addFilterConditions($filterForm, $queryBuilder);
             }
         }

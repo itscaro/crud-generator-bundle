@@ -16,7 +16,7 @@ use Sensio\Bundle\GeneratorBundle\Generator\DoctrineCrudGenerator;
 use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
 
-class ItscaroCrudGenerator extends DoctrineCrudGenerator
+class CrudGenerator extends DoctrineCrudGenerator
 {
     protected $formFilterGenerator;
 

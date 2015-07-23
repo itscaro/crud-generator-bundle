@@ -22,6 +22,8 @@ class {{ form_class }} extends AbstractType
 
         ;
 
+        $builder->setMethod('GET');
+
         $listener = function(FormEvent $event)
         {
             // Is data empty?
@@ -38,11 +40,12 @@ class {{ form_class }} extends AbstractType
 
             $event->getForm()->addError(new FormError('Filter empty'));
         };
-        $builder->addEventListener(FormEvents::POST_BIND, $listener);
+        $builder->addEventListener(FormEvents::POST_SUBMIT, $listener);
     }
 
     public function getName()
     {
-        return '{{ form_filter_type_name }}';
+        {#return '{{ form_filter_type_name }}';#}
+        return '{{ form_class|lower }}';
     }
 }

@@ -16,11 +16,11 @@ namespace Itscaro\CrudGeneratorBundle\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Sensio\Bundle\GeneratorBundle\Command\GenerateDoctrineCrudCommand;
-use Itscaro\CrudGeneratorBundle\Generator\ItscaroCrudGenerator;
+use Itscaro\CrudGeneratorBundle\Generator\CrudGenerator;
 use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 
 
-class ItscaroCrudCommand extends GenerateDoctrineCrudCommand
+class CrudCommand extends GenerateDoctrineCrudCommand
 {
     protected $generator;
     protected $formGenerator;
@@ -35,7 +35,7 @@ class ItscaroCrudCommand extends GenerateDoctrineCrudCommand
 
     protected function createGenerator($bundle = null)
     {
-        return new ItscaroCrudGenerator($this->getContainer()->get('filesystem'));
+        return new CrudGenerator($this->getContainer()->get('filesystem'));
     }
 
     protected function getSkeletonDirs(BundleInterface $bundle = null)

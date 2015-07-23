@@ -4,7 +4,7 @@ This Symfony2 bundle extends [SensioGeneratorBundle] (https://github.com/sensio/
 
 This bundle is based on the one made by Jordi Llonch [CrudGeneratorBundle] (https://github.com/jordillonch/CrudGeneratorBundle)
 
-[![Build Status](https://secure.travis-ci.org/itscaro/crud-generator-bundle.png?branch=master)](http://travis-ci.org/jordillonch/CrudGeneratorBundle)
+[![Build Status](https://secure.travis-ci.org/jordillonch/CrudGeneratorBundle.png?branch=master)](http://travis-ci.org/jordillonch/CrudGeneratorBundle)
 
 ## Screenshot
 
@@ -55,6 +55,10 @@ This bundle extends [SensioGeneratorBundle](https://github.com/sensio/SensioGene
 Use following command from console:
 
     app/console itscaro:generate:crud
+    
+or to generate for all entities in a bundle
+    
+    app/console itscaro:generate:all BUNDLE_NAME
 
 ## Use your own skeleton
 
