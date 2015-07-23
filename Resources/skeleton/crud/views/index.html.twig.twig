@@ -5,14 +5,12 @@
 {% block title %}
 {{ "{% block title %}" }}
 {{ "{{ parent() }} - {{ 'views.index.list'|trans({'%entity%': '" }}{{ entity }}{{ "'}, 'ItscaroCrudGeneratorBundle') }}" }}
-{{ "{% endblock title %}" }}
+{{ "{% endblock %}" }}
 {% endblock title %}
 
 {% block body %}
-{{ "{% block page %}" }}
-
+{{ "{% block body %}" }}
 <div class="row">
-
     <div class="col-xs-12">
         <h1>{{ "{{ 'views.index.list'|trans({'%entity%': '" }}{{ entity }}{{ "'}, 'ItscaroCrudGeneratorBundle') }}" }}</h1>
     </div>
@@ -37,7 +35,6 @@
 
     <div class="col-xs-12">
         <div id="filters" class="collapse">
-
             <form class="well" action="{{ "{{ path('"~ route_name_prefix ~"') }}" }}" method="get" {{ "{{ form_enctype(filterForm) }}" }}>
 
                 {%- for field, metadata in fields %}
@@ -62,17 +59,17 @@
                 <tr>
                 {%- for field, metadata in fields %}
 
-                    <th>{{ field|capitalize }}</th>
+                    <th>{{ "{{ '" ~ ['entity.' , entity, '.', field]|join|lower ~ "'|trans({}, 'ItscaroCrudGeneratorBundle') }}" }}</th>
 
                 {%- endfor %}
 
                     <th>{{ "{{ 'views.index.actions'|trans({}, 'ItscaroCrudGeneratorBundle') }}" }}</th>
+
                 </tr>
             </thead>
             <tbody>
             {{ '{% for entity in entities %}' }}
                 <tr>
-
             {%- for field, metadata in fields %}
                 {%- if loop.first and ('show' in actions) %}
 
@@ -96,7 +93,6 @@
 
                 {%- endif %}
             {%- endfor %}
-
                 </tr>
             {{ '{% endfor %}' }}
             </tbody>
@@ -115,6 +111,5 @@
     </div>
     {% endif %}
 </div>
-
-{{ "{% endblock page %}" }}
+{{ "{% endblock %}" }}
 {% endblock body %}

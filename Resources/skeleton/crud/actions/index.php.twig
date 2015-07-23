@@ -10,8 +10,10 @@
      */
     public function indexAction(Request $request)
     {
-        list($filterForm, $queryBuilder) = $this->filter($request);
+        $queryBuilder = $this->createQueryBuilder();
 
+        // Query Builder used in filter() and paginator() must be the same
+        $filterForm = $this->filter($request, $queryBuilder);
         $entities = $this->paginator($request, $queryBuilder);
 
 {% if 'annotation' == format %}
@@ -28,16 +30,26 @@
     }
 
     /**
+    * Shortcut to create a query builder of the repository '{{ bundle }}:{{ entity }}'
+    * @return mixed
+    */
+    protected function createQueryBuilder()
+    {
+        $queryBuilder = $this->getDoctrine()->getManager()->getRepository('{{ bundle }}:{{ entity }}')->createQueryBuilder('t');
+
+        return $queryBuilder;
+    }
+
+    /**
     * Create filter form and process filter request.
     * @param Request $request
+    * @param mixed $queryBuilder
     * @return array
     */
-    protected function filter(Request $request)
+    protected function filter(Request $request, $queryBuilder)
     {
         $session = $request->getSession();
         $filterForm = $this->createForm(new {{ entity }}FilterType());
-        $em = $this->getDoctrine()->getManager();
-        $queryBuilder = $em->getRepository('{{ bundle }}:{{ entity }}')->createQueryBuilder('e');
 
         // Reset filter
         if ($request->get('filter_action') == 'reset') {
@@ -65,7 +77,7 @@
             }
         }
 
-        return array($filterForm, $queryBuilder);
+        return $filterForm;
     }
 
     /**
@@ -76,8 +88,7 @@
     */
     protected function paginator(Request $request, $queryBuilder)
     {
-        $paginator  = $this->get('knp_paginator');
-        $entities = $paginator->paginate(
+        $entities = $this->get('knp_paginator')->paginate(
             $queryBuilder,
             $request->query->getInt('page', 1),
             25

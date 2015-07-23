@@ -5,11 +5,11 @@
 {% block title %}
 {{ "{% block title %}" }}
 {{ "{{ parent() }} - {{ 'views.new.creation'|trans({'%entity%': '" }}{{ entity }}{{ "'}, 'ItscaroCrudGeneratorBundle') }}" }}
-{{ "{% endblock title %}" }}
+{{ "{% endblock %}" }}
 {% endblock title %}
 
 {% block body %}
-{{ "{% block page %}" }}
+{{ "{% block body %}" }}
 
 <h1>{{ "{{ 'views.new.creation'|trans({'%entity%': '" }}{{ entity }}{{ "'}, 'ItscaroCrudGeneratorBundle') }}" }}</h1>
 
@@ -23,5 +23,5 @@
 {% set hide_edit, hide_delete = true, true %}
 {% include 'crud/views/others/record_actions.html.twig.twig' %}
 
-{{ "{% endblock page %}" }}
+{{ "{% endblock %}" }}
 {% endblock body %}
