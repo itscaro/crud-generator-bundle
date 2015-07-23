@@ -80,7 +80,10 @@ class ItscaroCrudCommandTest extends GenerateCommandTest
         $command = $this
             ->getMockBuilder('Itscaro\CrudGeneratorBundle\Command\ItscaroCrudCommand')
 //            ->getMockBuilder('Sensio\Bundle\GeneratorBundle\Command\GenerateDoctrineCrudCommand')
-            ->setMethods(array('getEntityMetadata'))
+            ->setMethods(array(
+                'getEntityMetadata',
+                'getQuestionHelper'
+            ))
             ->getMock()
         ;
 
