@@ -60,11 +60,16 @@ or to generate for all entities in a bundle
     
     app/console itscaro:generate:all BUNDLE_NAME
 
+## Translation
+Put your translations in :
+* BUNDLE_DIR/Resources/translations/ItscaroCrudGeneratorBundle.<locale>.yml
+* ROOT_DIR/app/Resources/translations/ItscaroCrudGeneratorBundle.<locale>.yml
+
 ## Use your own skeleton
 
 You can put your own templates in :
 * BUNDLE_DIR/Resources/ItscaroCrudGeneratorBundle/skeleton
-* ROOT_DIR/Resources/ItscaroCrudGeneratorBundle/skeleton
+* ROOT_DIR/app/Resources/ItscaroCrudGeneratorBundle/skeleton
 
 ## Credits
 
