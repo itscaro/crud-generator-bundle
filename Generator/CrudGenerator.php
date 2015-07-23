@@ -67,7 +67,7 @@ class CrudGenerator extends DoctrineCrudGenerator
                 'entity_class'     => $entityClass,
                 'bundle'           => $bundle->getName(),
                 'form_class'       => $this->className,
-                'form_filter_type_name'   => strtolower(str_replace('\\', '_', $bundle->getNamespace()).($parts ? '_' : '').implode('_', $parts).'_'.$this->className),
+                'form_filter_type_name'   => strtolower(str_replace('\\', '_', $bundle->getNamespace()).($parts ? '_' : '').implode('_', $parts).'_'.substr($this->className, 0, -4)),
             )
         );
     }

@@ -65,13 +65,13 @@ class CrudGeneratorTest extends DoctrineCrudGeneratorTest
             $this->assertContains($string, $content);
         }
 
-
         $this->assertTrue(file_exists($this->tmpDir.'/Form/PostFilterType.php'));
 
         $content = file_get_contents($this->tmpDir.'/Form/PostFilterType.php');
         $this->assertContains('->add(\'title\', \'filter_text\')', $content);
         $this->assertContains('class PostFilterType extends AbstractType', $content);
-        $this->assertContains("'foo_barbundle_postfiltertype'", $content);
+        //$this->assertContains("'foo_barbundle_postfilter'", $content);
+        $this->assertContains("'postfilter'", $content);
 
     }
 }

@@ -30,6 +30,6 @@ class {{ form_class }} extends AbstractType
     public function getName()
     {
         {#return '{{ form_type_name }}';#}
-        return '{{ form_class|lower }}';
+        return '{{ form_class|slice(0,-4)|lower }}';
     }
 }
