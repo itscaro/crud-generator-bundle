@@ -13,4 +13,4 @@ before_script:
     - php composer.phar --dev install
 
 script:
-    - bin/phpunit
+    - vendor/bin/phpunit
