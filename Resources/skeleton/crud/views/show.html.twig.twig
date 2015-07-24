@@ -7,13 +7,13 @@
 
 {% block title %}
 {{ "{% block title %}" }}
-{{ "{{ parent() }} -  {{ 'views.show.title'|trans({'%entity%': '" ~ ['entity.', entity, '.name']|join|lower ~ "'|trans({}, 'ItscaroCrudGeneratorBundle')}, 'ItscaroCrudGeneratorBundle') }}" }}
+{{ "{{ parent() }} -  {{ 'views.show.title'|trans({'%entity%': '" ~ ['entity.', entity, '._name_']|join|lower ~ "'|trans({}, 'ItscaroCrudGeneratorBundle')}, 'ItscaroCrudGeneratorBundle') }}" }}
 {{ "{% endblock %}" }}
 {% endblock title %}
 
 {% block body %}
 {{ "{% block body %}" }}
-    <h1>{{ "{{ 'views.show.show'|trans({'%entity%': '" ~ ['entity.', entity, '.name']|join|lower ~ "'|trans({}, 'ItscaroCrudGeneratorBundle')}, 'ItscaroCrudGeneratorBundle') }}" }}</h1>
+    <h1>{{ "{{ 'views.show.show'|trans({'%entity%': '" ~ ['entity.', entity, '._name_']|join|lower ~ "'|trans({}, 'ItscaroCrudGeneratorBundle')}, 'ItscaroCrudGeneratorBundle') }}" }}</h1>
 
     {{ "{% include '" ~ bundle ~ ":" ~ entity ~ ":item.html.twig' with {'entity' : entity} %}"}}
 

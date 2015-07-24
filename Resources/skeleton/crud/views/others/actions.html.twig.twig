@@ -1,8 +1,16 @@
 
 {%- for action in record_actions %}
 
-        <a class="btn btn-mini" href="{{ "{{ path('"~ route_name_prefix ~"_"~ action ~"', { 'id': entity.id }) }}" }}">
-            {{ "{{ 'views.actions."~action~"'|trans({}, 'ItscaroCrudGeneratorBundle') }}" }}
-        </a>
+    {% if action == 'show' %}
+        {% set class = 'btn-info' %}
+    {% elseif action == 'edit' %}
+        {% set class = 'btn-warning' %}
+    {% else %}
+        {% set class = '' %}
+    {% endif %}
+
+    <a class="btn btn-mini {{ class }}" href="{{ "{{ path('"~ route_name_prefix ~"_"~ action ~"', { 'id': entity.id }) }}" }}">
+        {{ "{{ 'views.actions."~action~"'|trans({}, 'ItscaroCrudGeneratorBundle') }}" }}
+    </a>
 
 {%- endfor %}

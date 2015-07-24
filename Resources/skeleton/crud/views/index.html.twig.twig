@@ -7,7 +7,7 @@
 
 {% block title %}
 {{ "{% block title %}" }}
-{{ "{{ parent() }} - {{ 'views.index.list'|trans({'%entity%': '" ~ ['entity.', entity, '.name']|join|lower ~ "'|trans({}, 'ItscaroCrudGeneratorBundle')} , 'ItscaroCrudGeneratorBundle') }}" }}
+{{ "{{ parent() }} - {{ 'views.index.list'|trans({'%entity%': '" ~ ['entity.', entity, '._name_']|join|lower ~ "'|trans({}, 'ItscaroCrudGeneratorBundle')} , 'ItscaroCrudGeneratorBundle') }}" }}
 {{ "{% endblock %}" }}
 {% endblock title %}
 
@@ -15,7 +15,7 @@
 {{ "{% block body %}" }}
 <div class="row">
     <div class="col-xs-12">
-        <h1>{{ "{{ 'views.index.list'|trans({'%entity%': '" ~ ['entity.', entity, '.name']|join|lower ~ "'|trans({}, 'ItscaroCrudGeneratorBundle')} , 'ItscaroCrudGeneratorBundle') }}" }}</h1>
+        <h1>{{ "{{ 'views.index.list'|trans({'%entity%': '" ~ ['entity.', entity, '._name_']|join|lower ~ "'|trans({}, 'ItscaroCrudGeneratorBundle')} , 'ItscaroCrudGeneratorBundle') }}" }}</h1>
     </div>
 
     <div class="col-xs-12">
@@ -109,7 +109,7 @@
     {% if 'new' in actions %}
     <div class="col-xs-12">
         <a class="btn btn-primary" href="{{ "{{ path('"~ route_name_prefix ~"_new') }}" }}">
-            {{ "{{ 'views.index.createnew'|trans({'%entity%': '" ~ ['entity.', entity, '.name']|join|lower ~ "'|trans({}, 'ItscaroCrudGeneratorBundle')} , 'ItscaroCrudGeneratorBundle') }}" }}
+            {{ "{{ 'views.index.createnew'|trans({'%entity%': '" ~ ['entity.', entity, '._name_']|join|lower ~ "'|trans({}, 'ItscaroCrudGeneratorBundle')} , 'ItscaroCrudGeneratorBundle') }}" }}
         </a>
     </div>
     {% endif %}
