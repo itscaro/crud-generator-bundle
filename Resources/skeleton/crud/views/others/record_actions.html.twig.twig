@@ -4,7 +4,6 @@
             {{ "{{ 'views.recordactions.backtothelist'|trans({}, 'ItscaroCrudGeneratorBundle') }}" }}
         </a>
     </div>
-
 {% if ('edit' in actions) and (not hide_edit) %}
     <div class="float-left">
         <a class="btn btn-warning" href="{{ "{{ path('"~ route_name_prefix ~"_edit', { 'id': entity.id }) }}" }}">
@@ -12,7 +11,6 @@
         </a>
     </div>
 {% endif %}
-
 {% if ('delete' in actions) and (not hide_delete) %}
     <div class="float-left">
         <form action="{{ "{{ path('"~ route_name_prefix ~"_delete', { 'id': entity.id }) }}" }}" method="post">

@@ -11,11 +11,11 @@
 
                     <td>{{ '{{ entity.' ~ field|replace({'_': ''}) ~ '|date(\'Y-m-d H:i:s\') }}' }}</td>
 
-                {%- if metadata.type in ['date'] %}
+                {%- elseif metadata.type in ['date'] %}
 
                     <td>{{ '{{ entity.' ~ field|replace({'_': ''}) ~ '|date(\'Y-m-d\') }}' }}</td>
 
-                {%- if metadata.type in ['time'] %}
+                {%- elseif metadata.type in ['time'] %}
 
                     <td>{{ '{{ entity.' ~ field|replace({'_': ''}) ~ '|date(\'H:i:s\') }}' }}</td>
 
