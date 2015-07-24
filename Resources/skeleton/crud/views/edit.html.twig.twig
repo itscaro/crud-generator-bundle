@@ -1,5 +1,8 @@
 {% block extends %}
-{{ "{% extends 'ItscaroCrudGeneratorBundle::layout.html.twig' %}" }}
+{{ "{% extends standalone is defined and standalone ?
+['" ~ bundle ~ "::layout-minimal.html.twig', 'layout-minimal.html.twig', 'ItscaroCrudGeneratorBundle::layout-minimal.html.twig'] :
+['" ~ bundle ~ "::layout.html.twig', 'layout.html.twig', 'ItscaroCrudGeneratorBundle::layout.html.twig']
+%}"}}
 {% endblock extends %}
 
 {% block title %}

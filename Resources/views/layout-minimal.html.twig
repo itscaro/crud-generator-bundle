@@ -1,0 +1,16 @@
+{% block container %}
+<div class="container-fluid">
+    {% block menu %}{% endblock %}
+
+    {% for type, flashMessages in app.session.flashbag.all() %}
+        {% for flashMessage in flashMessages %}
+            <div class="alert alert-{{ type }}">
+                {{ flashMessage|trans({}, 'ItscaroCrudGeneratorBundle') }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    {% block body %}{% endblock %}
+
+</div>
+{% endblock %}
