@@ -106,7 +106,7 @@
     {% if 'new' in actions %}
     <div class="col-xs-12">
         <a class="btn btn-primary" href="{{ "{{ path('"~ route_name_prefix ~"_new') }}" }}">
-            {{ "{{ 'views.index.createnew'|trans({}, 'ItscaroCrudGeneratorBundle') }}" }} {{ entity }}
+            {{ "{{ 'views.index.createnew'|trans({'%entity%': '" ~ ['entity.', entity, '.name']|join|lower ~ "'|trans({}, 'ItscaroCrudGeneratorBundle')} , 'ItscaroCrudGeneratorBundle') }}" }}
         </a>
     </div>
     {% endif %}

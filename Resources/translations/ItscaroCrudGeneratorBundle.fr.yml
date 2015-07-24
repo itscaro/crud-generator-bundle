@@ -5,9 +5,9 @@ views:
         filters: Filtres
         filter: Filtrer
         reset: Réinitialiser
-        list: Liste %entity%
+        list: Liste de %entity%
         actions: Actions
-        createnew: Créer un nouveau
+        createnew: Créer un nouveau %entity%
         pagprev: '&larr; Précédent'
         pagnext: 'Suivant &rarr;'
     actions:

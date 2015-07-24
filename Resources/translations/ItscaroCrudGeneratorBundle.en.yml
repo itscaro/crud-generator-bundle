@@ -7,7 +7,7 @@ views:
         reset: Reset
         list: %entity% list
         actions: Actions
-        createnew: Create a new
+        createnew: Create a new %entity%
         pagprev: '&larr; Previous'
         pagnext: 'Next &rarr;'
     actions:
