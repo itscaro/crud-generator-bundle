@@ -25,7 +25,8 @@ views:
         edit: Edit %entity%
         editbutton: Edit
     show:
-        show: Show %entity%
+        title: Show %entity%
+        show: %entity%
 flash:
     create:
         success: Item has been successfully created.

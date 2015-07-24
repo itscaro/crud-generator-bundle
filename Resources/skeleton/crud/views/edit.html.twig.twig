@@ -4,14 +4,14 @@
 
 {% block title %}
 {{ "{% block title %}" }}
-{{ "{{ parent() }} -  {{ 'views.edit.edit'|trans({'%entity%': '" }}{{ entity }}{{ "'}, 'ItscaroCrudGeneratorBundle') }}" }}
+{{ "{{ parent() }} -  {{ 'views.edit.edit'|trans({'%entity%': '" ~ ['entity.', entity, '.name']|join|lower ~ "'|trans({}, 'ItscaroCrudGeneratorBundle')} , 'ItscaroCrudGeneratorBundle') }}" }}
 {{ "{% endblock %}" }}
 {% endblock title %}
 
 {% block body %}
 {{ "{% block body %}" }}
 
-<h1>{{ "{{ 'views.edit.edit'|trans({'%entity%': '" }}{{ entity }}{{ "'}, 'ItscaroCrudGeneratorBundle') }}" }}</h1>
+<h1>{{ "{{ 'views.edit.edit'|trans({'%entity%': '" ~ ['entity.', entity, '.name']|join|lower ~ "'|trans({}, 'ItscaroCrudGeneratorBundle')} , 'ItscaroCrudGeneratorBundle') }}" }}</h1>
 
 <form class="well" action="{{ "{{ path('"~ route_name_prefix ~"_update', { 'id': entity.id }) }}" }}" method="post" {{ "{{ form_enctype(edit_form) }}" }}>
     <input type="hidden" name="_method" value="PUT" />

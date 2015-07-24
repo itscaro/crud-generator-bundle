@@ -4,7 +4,7 @@
 
 {% block title %}
 {{ "{% block title %}" }}
-{{ "{{ parent() }} - {{ 'views.index.list'|trans({'%entity%': '" }}{{ entity }}{{ "'}, 'ItscaroCrudGeneratorBundle') }}" }}
+{{ "{{ parent() }} - {{ 'views.index.list'|trans({'%entity%': '" ~ ['entity.', entity, '.name']|join|lower ~ "'|trans({}, 'ItscaroCrudGeneratorBundle')} , 'ItscaroCrudGeneratorBundle') }}" }}
 {{ "{% endblock %}" }}
 {% endblock title %}
 
@@ -12,7 +12,7 @@
 {{ "{% block body %}" }}
 <div class="row">
     <div class="col-xs-12">
-        <h1>{{ "{{ 'views.index.list'|trans({'%entity%': '" }}{{ entity }}{{ "'}, 'ItscaroCrudGeneratorBundle') }}" }}</h1>
+        <h1>{{ "{{ 'views.index.list'|trans({'%entity%': '" ~ ['entity.', entity, '.name']|join|lower ~ "'|trans({}, 'ItscaroCrudGeneratorBundle')} , 'ItscaroCrudGeneratorBundle') }}" }}</h1>
     </div>
 
     <div class="col-xs-12">
@@ -53,8 +53,8 @@
         </div>
     </div>
 
-    <div class="col-xs-12">
-        <table class="table table-striped table-bordered table-condensed">
+    <div class="col-xs-12 table-responsive">
+        <table class="table table-striped table-bordered table-condensed table-hover">
             <thead>
                 <tr>
                 {%- for field, metadata in fields %}

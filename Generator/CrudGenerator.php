@@ -134,4 +134,20 @@ class CrudGenerator extends DoctrineCrudGenerator
         return $fieldsData;
     }
 
+    protected function generateShowView($dir)
+    {
+        parent::generateShowView($dir);
+
+        $this->renderFile('crud/views/others/item.html.twig.twig', $dir.'/item.html.twig', array(
+            'bundle'            => $this->bundle->getName(),
+            'entity'            => $this->entity,
+            'identifier'        => $this->metadata->identifier[0],
+            'fields'            => $this->metadata->fieldMappings,
+            'actions'           => $this->actions,
+            'route_prefix'      => $this->routePrefix,
+            'route_name_prefix' => $this->routeNamePrefix,
+        ));
+    }
+
+
 }

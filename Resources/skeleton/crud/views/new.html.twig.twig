@@ -4,14 +4,14 @@
 
 {% block title %}
 {{ "{% block title %}" }}
-{{ "{{ parent() }} - {{ 'views.new.creation'|trans({'%entity%': '" }}{{ entity }}{{ "'}, 'ItscaroCrudGeneratorBundle') }}" }}
+{{ "{{ parent() }} - {{ 'views.new.creation'|trans({'%entity%': '" ~ ['entity.', entity, '.name']|join|lower ~ "'|trans({}, 'ItscaroCrudGeneratorBundle')} , 'ItscaroCrudGeneratorBundle') }}" }}
 {{ "{% endblock %}" }}
 {% endblock title %}
 
 {% block body %}
 {{ "{% block body %}" }}
 
-<h1>{{ "{{ 'views.new.creation'|trans({'%entity%': '" }}{{ entity }}{{ "'}, 'ItscaroCrudGeneratorBundle') }}" }}</h1>
+<h1>{{ "{{ 'views.new.creation'|trans({'%entity%': '" ~ ['entity.', entity, '.name']|join|lower ~ "'|trans({}, 'ItscaroCrudGeneratorBundle')} , 'ItscaroCrudGeneratorBundle') }}" }}</h1>
 
 <form class="well" action="{{ "{{ path('"~ route_name_prefix ~"_create') }}" }}" method="post" {{ "{{ form_enctype(form) }}" }}>
     {{ "{{ form_widget(form) }}" }}
