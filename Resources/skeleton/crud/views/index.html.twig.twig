@@ -72,15 +72,25 @@
             </thead>
             <tbody>
             {{ '{% for entity in entities %}' }}
+
                 <tr>
+
             {%- for field, metadata in fields %}
                 {%- if loop.first and ('show' in actions) %}
 
                     <td><a href="{{ "{{ path('"~ route_name_prefix ~"_show', { 'id': entity.id }) }}" }}">{{ '{{ entity.'~ field|replace({'_': ''}) ~' }}' }}</a></td>
 
-                {%- elseif metadata.type in ['date', 'datetime'] %}
+                {%- elseif metadata.type in ['datetime'] %}
 
                     <td>{{ '{% if entity.'~ field|replace({'_': ''}) ~' %}{{ entity.'~ field|replace({'_': ''}) ~'|date(\'Y-m-d H:i:s\') }}{% endif %}' }}</td>
+
+                {%- elseif metadata.type in ['date'] %}
+
+                    <td>{{ '{% if entity.'~ field|replace({'_': ''}) ~' %}{{ entity.'~ field|replace({'_': ''}) ~'|date(\'Y-m-d\') }}{% endif %}' }}</td>
+
+                {%- elseif metadata.type in ['time'] %}
+
+                    <td>{{ '{% if entity.'~ field|replace({'_': ''}) ~' %}{{ entity.'~ field|replace({'_': ''}) ~'|date(\'H:i:s\') }}{% endif %}' }}</td>
 
                 {%- else %}
 
@@ -91,12 +101,16 @@
                 {%- if loop.last %}
 
                     <td>
+
                         {%- include "crud/views/others/actions.html.twig.twig" %}
+
                     </td>
 
                 {%- endif %}
             {%- endfor %}
+
                 </tr>
+
             {{ '{% endfor %}' }}
             </tbody>
         </table>

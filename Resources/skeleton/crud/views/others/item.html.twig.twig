@@ -7,9 +7,17 @@
             <tr>
                 <th>{{ "{{ '" ~ ['entity.', entity, '.', field ]|join|lower ~ "'|trans({}, 'ItscaroCrudGeneratorBundle') }}" }}</th>
 
-                {%- if metadata.type in ['date', 'datetime'] %}
+                {%- if metadata.type in ['datetime'] %}
 
                     <td>{{ '{{ entity.' ~ field|replace({'_': ''}) ~ '|date(\'Y-m-d H:i:s\') }}' }}</td>
+
+                {%- if metadata.type in ['date'] %}
+
+                    <td>{{ '{{ entity.' ~ field|replace({'_': ''}) ~ '|date(\'Y-m-d\') }}' }}</td>
+
+                {%- if metadata.type in ['time'] %}
+
+                    <td>{{ '{{ entity.' ~ field|replace({'_': ''}) ~ '|date(\'H:i:s\') }}' }}</td>
 
                 {%- else %}
 
