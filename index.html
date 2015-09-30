@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>CRUD Generator Bundle by itscaro</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">CRUD Generator Bundle</h1>
+        <p class="header">CRUD generator with filter and pagination for Symfony</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/itscaro/crud-generator-bundle/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/itscaro/crud-generator-bundle/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/itscaro/crud-generator-bundle">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/itscaro">itscaro</a></p>
+
+
+      </header>
+      <section>
+        <h1>
+<a id="crudgeneratorbundle" class="anchor" href="#crudgeneratorbundle" aria-hidden="true"><span class="octicon octicon-link"></span></a>CrudGeneratorBundle</h1>
+
+<p>This Symfony2 bundle extends <a href="https://github.com/sensio/SensioGeneratorBundle">SensioGeneratorBundle</a>, it creates a nice CRUD with pagination, filter, translation and Twitter bootstrap 3 features.</p>
+
+<p>This bundle is based on the one made by Jordi Llonch <a href="https://github.com/jordillonch/CrudGeneratorBundle">CrudGeneratorBundle</a></p>
+
+<p><a href="http://travis-ci.org/itscaro/crud-generator-bundle"><img src="https://secure.travis-ci.org/itscaro/crud-generator-bundle.png?branch=master" alt="Build Status"></a></p>
+
+<h2>
+<a id="screenshot" class="anchor" href="#screenshot" aria-hidden="true"><span class="octicon octicon-link"></span></a>Screenshot</h2>
+
+<p><img src="https://raw.github.com/itscaro/crud-generator-bundle/master/screenshot.png" alt="Screenshot" title="Screenshot"></p>
+
+<h2>
+<a id="why-use-a-crud-generator" class="anchor" href="#why-use-a-crud-generator" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why use a CRUD generator?</h2>
+
+<p>Well, because CRUD generator creates simple code, no magic, no configuration files, just simple and plain code that you can extend and modify easily.</p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Add following lines to your <code>composer.json</code> file:</p>
+
+<pre><code>"require": {
+  "itscaro/crud-generator-bundle": "dev-master"
+},
+</code></pre>
+
+<p>Execute:</p>
+
+<pre><code>php composer.phar update
+</code></pre>
+
+<p>Add it to the <code>AppKernel.php</code> class:</p>
+
+<pre><code>new Lexik\Bundle\FormFilterBundle\LexikFormFilterBundle(),
+new Itscaro\CrudGeneratorBundle\ItscaroCrudGeneratorBundle(),
+</code></pre>
+
+<p>Add it to your <code>app/config/config.yml</code></p>
+
+<pre><code>framework:
+    translator: { fallback: en }
+
+twig:
+    form:
+        resources:
+            - LexikFormFilterBundle:Form:form_div_layout.html.twig
+</code></pre>
+
+<p><strong>This bundle works on Symfony &gt;= 2.5 version.</strong></p>
+
+<h2>
+<a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dependencies</h2>
+
+<p>This bundle extends <a href="https://github.com/sensio/SensioGeneratorBundle">SensioGeneratorBundle</a> and add </p>
+
+<ul>
+<li>a paginator using <a href="https://github.com/knplabs/knp-paginator-bundle">KnpPaginatorBundle</a>
+</li>
+<li>a filter support using <a href="https://github.com/lexik/LexikFormFilterBundle">LexikFormFilterBundle</a>
+</li>
+</ul>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Use following command from console:</p>
+
+<pre><code>app/console itscaro:generate:crud
+</code></pre>
+
+<p>or to generate for all entities in a bundle</p>
+
+<pre><code>app/console itscaro:generate:all BUNDLE_NAME
+</code></pre>
+
+<h2>
+<a id="translation" class="anchor" href="#translation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Translation</h2>
+
+<p>Put your translations in :</p>
+
+<ul>
+<li>BUNDLE_DIR/Resources/translations/ItscaroCrudGeneratorBundle..yml</li>
+<li>ROOT_DIR/app/Resources/translations/ItscaroCrudGeneratorBundle..yml</li>
+</ul>
+
+<h2>
+<a id="use-your-own-skeleton" class="anchor" href="#use-your-own-skeleton" aria-hidden="true"><span class="octicon octicon-link"></span></a>Use your own skeleton</h2>
+
+<p>You can put your own templates in :</p>
+
+<ul>
+<li>BUNDLE_DIR/Resources/ItscaroCrudGeneratorBundle/skeleton</li>
+<li>ROOT_DIR/app/Resources/ItscaroCrudGeneratorBundle/skeleton</li>
+</ul>
+
+<h2>
+<a id="credits" class="anchor" href="#credits" aria-hidden="true"><span class="octicon octicon-link"></span></a>Credits</h2>
+
+<p>Jordi Llonch</p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>CrudGeneratorBundle is licensed under the MIT License. See the LICENSE file for full details.</p>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
+  </body>
+</html>
